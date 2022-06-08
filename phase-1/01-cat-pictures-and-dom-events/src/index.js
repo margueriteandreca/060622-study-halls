@@ -52,9 +52,11 @@ removeAllCats.addEventListener("click", function(){
   toDelete.forEach(meow => {
     meow.remove();
   });
+})
 
 
 const catForm = document.getElementById("new-kitty");
+
 catForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const catDiv = document.createElement("div");
@@ -62,14 +64,15 @@ catForm.addEventListener("submit", (e) => {
   console.log(catDiv)
   // create image and its attributes
   const catImg = document.createElement("img");
-  const inputName = document.getElementById("kitty-name")
-  const inputURL = document.getElementById("new-kitty-URL")
-  catImg.src = inputURL.value
-  /atImg.alt = inputName.value
+
+  const inputName = document.getElementById("kitty-name").value
+  const inputURL = document.getElementById("new-kitty-URL").value
+  catImg.src = inputURL
+  catImg.alt = inputName
   console.log(inputURL, inputName);
   //create the h2 element which will display cat's Name from data.name
   const h2 = document.createElement("h2");
-  h2.textContent = inputName.value
+  h2.textContent = inputName
   // create Remove button
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Remove"
@@ -82,5 +85,4 @@ catForm.addEventListener("submit", (e) => {
   const catContainer = document.getElementById("images-container");
   catContainer.append(catDiv);
 
-})
-})
+});
