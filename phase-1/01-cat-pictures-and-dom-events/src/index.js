@@ -12,3 +12,75 @@ const data = [
 ]
 
 // add your code here!
+
+
+const catButton = document.getElementById("add-random-cat-button"); 
+
+catButton.addEventListener("click", function() {
+  const catDiv = document.createElement("div");
+  catDiv.className = "cat-image"
+  // accessing data index by using math floor, math random
+  const num = Math.floor(Math.random() * 9);
+  // create image and its attributes
+  const catImg = document.createElement("img");
+  catImg.src = data[num].image; 
+  catImg.alt = data[num].name;
+  // create the h2 element which will display cat's Name from data.name
+  const h2 = document.createElement("h2");
+  h2.textContent = data[num].name;
+  // create Remove button
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Remove"
+  deleteButton.addEventListener("click", function() {
+    catDiv.remove();
+  })
+  //appending elements into catDiv
+  catDiv.append(h2, catImg, deleteButton);
+  //appending catDiv into existing
+  const catContainer = document.getElementById("images-container");
+  catContainer.append(catDiv);
+
+})
+
+//Button to remove all cats 
+
+const removeAllCats = document.getElementById("remove-all-cats");
+
+removeAllCats.addEventListener("click", function(){
+  const toDelete = document.querySelectorAll(".cat-image");
+  //const deletionArray = Array.from(toDelete);
+  toDelete.forEach(meow => {
+    meow.remove();
+  });
+
+
+const catForm = document.getElementById("new-kitty");
+catForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const catDiv = document.createElement("div");
+  catDiv.className = "cat-image"
+  console.log(catDiv)
+  // create image and its attributes
+  const catImg = document.createElement("img");
+  const inputName = document.getElementById("kitty-name")
+  const inputURL = document.getElementById("new-kitty-URL")
+  catImg.src = inputURL.value
+  /atImg.alt = inputName.value
+  console.log(inputURL, inputName);
+  //create the h2 element which will display cat's Name from data.name
+  const h2 = document.createElement("h2");
+  h2.textContent = inputName.value
+  // create Remove button
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Remove"
+  deleteButton.addEventListener("click", function() {
+    catDiv.remove();
+  })
+  //appending elements into catDiv
+  catDiv.append(h2, catImg, deleteButton);
+  //appending catDiv into existing
+  const catContainer = document.getElementById("images-container");
+  catContainer.append(catDiv);
+
+})
+})
